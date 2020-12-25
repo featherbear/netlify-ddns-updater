@@ -43,7 +43,7 @@ try:
   entry = next(filter(lambda x: x['hostname'] == HOSTNAME, NetlifyClient.get(f"{SITE_ID}/dns_records")))
   if entry["value"] != myIP:
     print("IP changed, updating record")
-    NetlifyClient.delete(f"{SITE_ID}/dns_records/{entry['value']}")
+    NetlifyClient.delete(f"{SITE_ID}/dns_records/{entry['id']}")
   else:
     print("IP unchanged, exiting")
     sys.exit()
